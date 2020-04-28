@@ -1,0 +1,32 @@
+{
+  "name": "@mintpond/mint-bitcoin-script",
+  "version": "1.0.0",
+  "description": "Bitcoin Script generating utilities for NodeJS",
+  "author": "JCThePants",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "@mintpond/mint-precon": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha tests/mocha.*"
+  },
+  "homepage": "https://github.com/MintPond/mint-bitcoin-script",
+  "bugs": {
+    "url": "https://github.com/MintPond/mint-bitcoin-script/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MintPond/mint-bitcoin-script.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "engines": {
+    "node": ">=10.17.0"
+  }
+}
