@@ -1,6 +1,6 @@
 {
   "name": "@mintpond/mint-bitcoin-script",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bitcoin Script generating utilities for NodeJS",
   "author": "JCThePants",
   "main": "index.js",
