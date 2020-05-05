@@ -22,12 +22,12 @@ describe('mint-bitcoin-script', () => {
 
         it('should serialize number to a Buffer (1)', () => {
             const serializedBuf = serializeNumber(1);
-            assert.strictEqual(serializedBuf.toString('hex'), '0101');
+            assert.strictEqual(serializedBuf.toString('hex'), '51');
         });
 
         it('should serialize number to a Buffer (16)', () => {
             const serializedBuf = serializeNumber(16);
-            assert.strictEqual(serializedBuf.toString('hex'), '0110');
+            assert.strictEqual(serializedBuf.toString('hex'), '60');
         });
 
         it('should serialize number to a Buffer (17)', () => {
@@ -42,12 +42,12 @@ describe('mint-bitcoin-script', () => {
 
         it('should serialize number to a Buffer (128)', () => {
             const serializedBuf = serializeNumber(128);
-            assert.strictEqual(serializedBuf.toString('hex'), '0180');
+            assert.strictEqual(serializedBuf.toString('hex'), '028000');
         });
 
         it('should serialize number to a Buffer (4000000000000)', () => {
             const serializedBuf = serializeNumber(4000000000000);
-            assert.strictEqual(serializedBuf.toString('hex'), '03004094');
+            assert.strictEqual(serializedBuf.toString('hex'), '0400409452');
         });
     });
 
@@ -285,7 +285,7 @@ describe('mint-bitcoin-script', () => {
         context('INTEGER operation', () => {
             it('should correctly serialize a number value', () => {
                 const scriptBuf = makeScript('INTEGER', [123456789]);
-                assert.strictEqual(scriptBuf.toString('hex'), '0315cd5b');
+                assert.strictEqual(scriptBuf.toString('hex'), '0415cd5b');
             });
             it('should throw if the data is not a number', () => {
                 _expectThrow(() => {
@@ -302,7 +302,7 @@ describe('mint-bitcoin-script', () => {
         context('TIMESTAMP operation', () => {
             it('should correctly serialize a number value', () => {
                 const scriptBuf = makeScript('INTEGER', [123456789]);
-                assert.strictEqual(scriptBuf.toString('hex'), '0315cd5b');
+                assert.strictEqual(scriptBuf.toString('hex'), '0415cd5b');
             });
             it('should throw if the data is not a number', () => {
                 _expectThrow(() => {

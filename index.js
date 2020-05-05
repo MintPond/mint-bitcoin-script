@@ -210,6 +210,12 @@ function serializeNumber(num, outputBuf, offset) {
 
     offset = outputBuf ? offset || 0 : 0;
 
+    if (num >= 1 && num <= 16) {
+        const buff = outputBuf || Buffer.alloc(1);
+        buff.writeUInt8(0x50 + num, offset);
+        return buff;
+    }
+
     if (num <= 0x7F) {
         const buff = outputBuf || Buffer.alloc(2);
         buff.writeUInt8(1, offset + 0);
@@ -225,9 +231,10 @@ function serializeNumber(num, outputBuf, offset) {
         byteCount++;
     }
 
-    const buff = outputBuf || Buffer.alloc(byteCount + 1);
-    buff.writeUInt8(byteCount, offset + 0);
+    const buff = outputBuf || Buffer.alloc(byteCount + 2);
+    buff.writeUInt8(byteCount + 1, offset + 0);
     SERIALIZE_NUM_BUFFER.copy(buff, offset + 1, 0, byteCount);
+    buff.writeUInt8(n, offset + byteCount + 1);
 
     return outputBuf ? byteCount + 1 : buff;
 }
